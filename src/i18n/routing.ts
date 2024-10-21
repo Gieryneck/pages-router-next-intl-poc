@@ -19,6 +19,7 @@ export const routing = defineRouting({
 const {
   Link,
   redirect,
+  getPathname,
   usePathname,
   useRouter: useNextIntlRouter,
 } = createLocalizedPathnamesNavigation(routing);
@@ -47,5 +48,5 @@ const useRouter = function useCombinedRouter(): CombinedRouter {
   };
 };
 
-export { Link, redirect, usePathname, useRouter };
+export { Link, getPathname, redirect, usePathname, useRouter };
 

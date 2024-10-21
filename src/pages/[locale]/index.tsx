@@ -1,4 +1,5 @@
 import { Link, useRouter } from "@/i18n/routing";
+import sitemap from "@/i18n/sitemap";
 import { GetStaticPathsContext, GetStaticPropsContext } from "next";
 import { useLocale } from "next-intl";
 import Head from "next/head";
@@ -7,6 +8,8 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const locale = useLocale();
   const router = useRouter();
+
+  console.log('sitemap generation', sitemap());
 
   const [isRouterReady, setIsRouterReady] = useState(false);
   useEffect(() => {

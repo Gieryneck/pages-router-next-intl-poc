@@ -7,7 +7,7 @@ type Props = AppProps & {
   router: NextRouter;
 };
 
-function App({ Component, pageProps, router }: Props) {
+function App({ Component, pageProps }: Props) {
   console.log("pageProps", pageProps);
 
   return (
