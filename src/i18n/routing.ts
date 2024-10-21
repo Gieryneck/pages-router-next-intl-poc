@@ -11,7 +11,8 @@ export const routing = defineRouting({
       de: '/ueber-uns'
     }
   },
-  localePrefix: 'always'
+  // 'never' does not work, 'as-needed' gives query params when switching back to default lang
+  localePrefix: 'as-needed'
 });
 
 export const {Link, redirect, usePathname, useRouter} =

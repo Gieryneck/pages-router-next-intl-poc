@@ -1,7 +1,11 @@
 import { Link } from "@/i18n/routing";
+import { GetStaticPathsContext, GetStaticPropsContext } from "next";
+import { useLocale } from "next-intl";
 import Head from "next/head";
 
 export default function Home() {
+  const locale = useLocale();
+
   return (
     <>
       <Head>
@@ -11,15 +15,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <p>Home route</p>
+        <p>ROUTE: Home</p>
+        <p>LOCALE: {locale}</p>
         <div>
-          <a href="/about">About us</a>
+
+
+          <Link href="/about">
+            About us
+          </Link>
+          {/* <a href="/about" hrefLang={locale}>About us</a> */}
         </div>
         <div>
           <Link href="/" locale="en">
             Switch path to English
           </Link>
-        </div>{" "}
+        </div>
         <div>
           <Link href="/" locale="de">
             Switch path to German
@@ -28,4 +38,20 @@ export default function Home() {
       </main>
     </>
   );
+}
+
+export async function getStaticProps(context: GetStaticPropsContext) {
+  console.log("Home getStaticProps context", context);
+  return {
+    props: {
+      locale: context.params?.locale,
+    },
+  };
+}
+
+export async function getStaticPaths(context: GetStaticPathsContext) {
+  return {
+    paths: [{ params: { locale: "en" } }, { params: { locale: "de" } }],
+    fallback: false,
+  };
 }
