@@ -1,14 +1,17 @@
 import { Link } from "@/i18n/routing";
 import { GetStaticPathsContext, GetStaticPropsContext } from "next";
 import { useLocale } from "next-intl";
+import { useIntl } from 'react-intl';
 
 const About = () => {
   const locale = useLocale();
+  const {locale: reactIntlLocale} = useIntl();
 
   return (
     <>
       <p>ROUTE: About</p>
       <p>LOCALE: {locale}</p>
+      <p>react-intl LOCALE: {reactIntlLocale}</p>
       <Link href="/">Home</Link>
 
       <div>
