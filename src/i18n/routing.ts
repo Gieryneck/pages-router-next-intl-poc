@@ -24,10 +24,10 @@ const {
 } = createLocalizedPathnamesNavigation(routing);
 
 type NextIntlRouter = ReturnType<typeof useNextIntlRouter>;
-type CombinedRouter = NextRouter & NextIntlRouter;
+type Routers = NextRouter & NextIntlRouter;
 
-type Router = {
-  [K in keyof CombinedRouter]: K extends keyof NextIntlRouter
+type CombinedRouter = {
+  [K in keyof Routers]: K extends keyof NextIntlRouter
     ? NextIntlRouter[K]
     : K extends keyof NextRouter
     ? NextRouter[K]
@@ -37,7 +37,7 @@ type Router = {
 /**
  * Needs to be called within NextIntlClientProvider
  *  */
-const useRouter = function useCombinedRouter(): Router {
+const useRouter = function useCombinedRouter(): CombinedRouter {
   const router = useNextRouter();
   const nextIntlRouter = useNextIntlRouter();
 
