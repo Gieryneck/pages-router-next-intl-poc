@@ -2,15 +2,11 @@ import { getRequestConfig } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from './routing';
 
+// we're not really using it as of now (with next v13) 
+// but next-intl requires this file to be here
+// https://next-intl-docs.vercel.app/docs/usage/configuration#i18n-request
 export default getRequestConfig(async ({locale}) => {
-  console.log(`getRequestConfig validates locale...`)
-
-
-  // Validate that the incoming `locale` parameter is valid
   if (!routing.locales.includes(locale as any)) {
-    console.log(`locale: ${locale}`);
-    console.log(`routing.locales: ${routing.locales}`);
-    console.log(`getRequestConfig NOT FOUND`)
     notFound()
   };
 

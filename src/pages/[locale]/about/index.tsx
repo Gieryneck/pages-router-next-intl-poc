@@ -31,7 +31,6 @@ const About = () => {
 export default About;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  console.log("About getStaticProps context", context);
   return {
     props: {
       locale: context.params?.locale,

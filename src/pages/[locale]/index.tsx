@@ -52,7 +52,6 @@ export default function Home() {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  console.log("Home getStaticProps context", context);
   return {
     props: {
       locale: context.params?.locale,
